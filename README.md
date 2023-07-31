@@ -1,5 +1,11 @@
 # 🍎🥕 Fruits and Vegetables
 
+## Developer's Diary
+
+### 31/07/2023 16:25 - used time 20m
+* added some basic classes
+* updated php version in composer.json to 8.1, so I can use Enums
+
 ## 🎯 Goal
 We want to build a service which will take a `request.json` and:
 * Process the file and create two separate collections for `Fruits` and `Vegetables`
