@@ -10,6 +10,11 @@
 * removed the specific Fruit and Vegetable classes as they are not special from each other and the collections/models can be already distinguished by the ProduceType
 * added same base tests for Model creation
 
+### 01/08/2023 13:15 - used time 1h10m
+* basic requirements should be done
+* only simple tests, no tests for edge cases and wrong input
+* todo: add the possibility to switch between kg/g for list()
+
 ## 🎯 Goal
 We want to build a service which will take a `request.json` and:
 * Process the file and create two separate collections for `Fruits` and `Vegetables`
