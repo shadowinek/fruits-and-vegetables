@@ -2,12 +2,14 @@
 
 namespace App\Model;
 
-abstract class AbstractProduce implements ProduceInterface
+use App\Enum\ProduceType;
+class Produce implements ProduceInterface
 {
     public function __construct(
         protected readonly int $id,
         protected readonly string $name,
-        protected readonly int $quantity
+        protected readonly int $quantity,
+        protected readonly ProduceType $type
     )
     {}
 
@@ -25,5 +27,10 @@ abstract class AbstractProduce implements ProduceInterface
     public function getQuantity(): int
     {
         return $this->quantity;
+    }
+
+    public function getType(): ProduceType
+    {
+        return $this->type;
     }
 }

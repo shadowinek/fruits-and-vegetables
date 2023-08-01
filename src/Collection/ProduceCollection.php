@@ -5,12 +5,15 @@ namespace App\Collection;
 use App\Enum\ProduceType;
 use App\Model\ProduceInterface;
 
-abstract class AbstractProduceCollection implements CollectionInterface
+abstract class ProduceCollection implements CollectionInterface
 {
     /**
      * @var ProduceInterface[]
      */
     protected array $list;
+
+    public function __construct(protected readonly ProduceType $type)
+    {}
 
     public function add(ProduceInterface $produce): void
     {
@@ -30,5 +33,8 @@ abstract class AbstractProduceCollection implements CollectionInterface
         return $this->list;
     }
 
-    abstract public function getType(): ProduceType;
+    public function getType(): ProduceType
+    {
+        return $this->type;
+    }
 }

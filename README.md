@@ -6,6 +6,10 @@
 * added some basic classes
 * updated php version in composer.json to 8.1, so I can use Enums
 
+### 01/08/2023 10:40 - used time 40m
+* removed the specific Fruit and Vegetable classes as they are not special from each other and the collections/models can be already distinguished by the ProduceType
+* added same base tests for Model creation
+
 ## 🎯 Goal
 We want to build a service which will take a `request.json` and:
 * Process the file and create two separate collections for `Fruits` and `Vegetables`
