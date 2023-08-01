@@ -11,8 +11,9 @@ class ProduceFactory
         return new Produce(
             $produceData['id'],
             $produceData['name'],
+            ProduceType::from($produceData['type']),
             $this->getQuantityInGrams($produceData['quantity'], MeasurementUnit::from($produceData['unit'])),
-            ProduceType::from($produceData['type'])
+            MeasurementUnit::GRAM
         );
     }
 

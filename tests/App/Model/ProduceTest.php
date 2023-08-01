@@ -2,6 +2,7 @@
 
 namespace App\Tests\App\Model;
 
+use App\Enum\MeasurementUnit;
 use App\Enum\ProduceType;
 use App\Model\Produce;
 use PHPUnit\Framework\TestCase;
@@ -15,14 +16,16 @@ class ProduceTest extends TestCase
         $produce = new Produce(
             $produceData['id'],
             $produceData['name'],
+            ProduceType::from($produceData['type']),
             $produceData['quantity'],
-            ProduceType::from($produceData['type'])
+            MeasurementUnit::GRAM
         );
 
         $this->assertSame($produce->getId(), $produceData['id']);
         $this->assertSame($produce->getName(), $produceData['name']);
         $this->assertSame($produce->getQuantity(), $produceData['quantity']);
         $this->assertSame($produce->getType()->value, $produceData['type']);
+        $this->assertSame($produce->getUnit(), MeasurementUnit::GRAM);
     }
 
     public static function dataProvider() {

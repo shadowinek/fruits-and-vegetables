@@ -2,6 +2,7 @@
 
 namespace App\Collection;
 
+use App\Enum\MeasurementUnit;
 use App\Enum\ProduceType;
 use App\Model\ProduceInterface;
 
@@ -11,6 +12,8 @@ class ProduceCollection implements CollectionInterface
      * @var ProduceInterface[]
      */
     protected array $list = [];
+
+    protected MeasurementUnit $unit = MeasurementUnit::GRAM;
 
     public function __construct(protected readonly ProduceType $type)
     {}
@@ -43,5 +46,35 @@ class ProduceCollection implements CollectionInterface
     public function count(): int
     {
         return count($this->list);
+    }
+
+    public function setUnit(MeasurementUnit $unit): void
+    {
+        $this->unit = $unit;
+
+        foreach ($this->list as $item) {
+            $oldUnit = $item->getUnit();
+            $oldQuantity = $item->getQuantity();
+
+            if ($oldUnit !== $unit) {
+                $item->setUnit($unit);
+
+                switch ($unit) {
+                    case MeasurementUnit::GRAM:
+                        $newQuantity = $oldQuantity * MeasurementUnit::KILOGRAM->getMultiplier();
+                        break;
+                    case MeasurementUnit::KILOGRAM:
+                        $newQuantity = $oldQuantity / MeasurementUnit::KILOGRAM->getMultiplier();
+                        break;
+                }
+
+                $item->setQuantity($newQuantity);
+            }
+        }
+    }
+
+    public function getUnit(): MeasurementUnit
+    {
+        return $this->unit;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Tests\App\Model;
 
+use App\Enum\MeasurementUnit;
 use App\Model\ProduceFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -25,6 +26,7 @@ class ProduceFactoryTest extends TestCase
         $this->assertSame($produce->getName(), $produceData['name']);
         $this->assertSame($produce->getQuantity(), $quantityInGrams);
         $this->assertSame($produce->getType()->value, $produceData['type']);
+        $this->assertSame($produce->getUnit(), MeasurementUnit::GRAM);
     }
 
     public static function dataProvider(): array

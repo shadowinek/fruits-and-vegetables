@@ -15,6 +15,9 @@
 * only simple tests, no tests for edge cases and wrong input
 * todo: add the possibility to switch between kg/g for list()
 
+### 01/08/2023 17:15 - used time 1h30m
+* added support for unit switching
+
 ## 🎯 Goal
 We want to build a service which will take a `request.json` and:
 * Process the file and create two separate collections for `Fruits` and `Vegetables`

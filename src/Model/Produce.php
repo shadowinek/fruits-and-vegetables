@@ -2,14 +2,16 @@
 
 namespace App\Model;
 
+use App\Enum\MeasurementUnit;
 use App\Enum\ProduceType;
 class Produce implements ProduceInterface
 {
     public function __construct(
         protected readonly int $id,
         protected readonly string $name,
-        protected readonly int $quantity,
-        protected readonly ProduceType $type
+        protected readonly ProduceType $type,
+        protected int $quantity,
+        protected MeasurementUnit $unit,
     )
     {}
 
@@ -23,8 +25,7 @@ class Produce implements ProduceInterface
         return $this->name;
     }
 
-    // todo: add conversion to kg
-    public function getQuantity(): int
+    public function getQuantity(): int|float
     {
         return $this->quantity;
     }
@@ -32,5 +33,20 @@ class Produce implements ProduceInterface
     public function getType(): ProduceType
     {
         return $this->type;
+    }
+
+    public function setQuantity(float|int $quantity): void
+    {
+        $this->quantity = $quantity;
+    }
+
+    public function getUnit(): MeasurementUnit
+    {
+        return $this->unit;
+    }
+
+    public function setUnit(MeasurementUnit $unit): void
+    {
+        $this->unit = $unit;
     }
 }
